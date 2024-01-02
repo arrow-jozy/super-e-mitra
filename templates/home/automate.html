@@ -1,0 +1,12 @@
+{% extends "basic.html" %}
+{% block automateactive %}active{% endblock automateactive %}
+{% block body %}
+    <h1>This is automate</h1>
+    <form method="POST" action="/automate"> {% csrf_token %}
+
+        
+        <button type="submit" class="btn btn-primary">Runscript</button>
+      </form>
+
+{% endblock %}
+ 
