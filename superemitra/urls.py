@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('home.urls')),
     path('blog/',include('blog.urls')),
+    path('formfill/',include('formfill.urls')),
     path('summernote/', include('django_summernote.urls')),
 ]
 

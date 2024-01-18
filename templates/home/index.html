@@ -1,10 +1,62 @@
 {% extends "basic.html" %}
 {% block title %}Home{% endblock %}
+
 {% block homeactive %}active{% endblock homeactive %}
+{% block style %}
+
+@keyframes glitter {
+  0% {
+    color: #4CAF50; /* Initial color (Green shade) */
+    text-shadow: none; /* No shadow initially */
+  }
+  25% {
+    color: #4CAF50; /* Glitter color */
+    text-shadow: 0 0 10px #4CAF50; /* Glitter effect */
+  }
+  50% {
+    color: #4CAF50; /* Back to initial color */
+    text-shadow: none; /* No shadow */
+  }
+  100% {
+    color: #4CAF50; /* Back to initial color */
+    text-shadow: 0 0 10px #4CAF50; /* Glitter effect */
+  }
+}
+
+
+
+h1.glitter-effect {
+  animation: glitter 2s infinite alternate, slideIn 1.5s ease-in-out;
+  /* Adjust timing and duration as needed */
+}
+
+.jumbotron {
+  background-color: lightblue;
+}
+.btn-primary {
+  background-color: #4CAF50; /* Green color */
+  color: white; /* Text color */
+  border: none; /* Remove button border */
+  /* You can add more styles like padding, border-radius, etc. */
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+/* Change button styles on hover */
+.btn-primary:hover {
+  background-color: #45a049; /* Darker green on hover */
+  color: white; /* Text color */
+}
+
+
+{% endblock style %}
 {% block body %}
-<div class="container">
+
+<div class="container mt-2">
   <div class="jumbotron">
-    <h1 class="display-4">Welcome to SuperEmitra</h1>
+    <h1 class="display-4 glitter-effect" data-heading="Welcome to SuperEmitra">
+      Welcome to SuperEmitra
+    </h1>
     <p>Stay informed about the latest government schemes and how they can benefit you! Our blog covers everything from financial assistance to education and employment opportunities. Find the scheme that's right for you and learn how to apply.</p>
     <hr class="my-4">
     <p>Here are some of our most popular posts:</p>
@@ -12,7 +64,27 @@
   </div>
 </div>
 <div class="container">
-  <h1>Popular blogpost:</h1>
+  <h1 class="display-4 glitter-effect">Popular blogpost:</h1>
   
-
+  <div class="container">
+    {% for post in popular_blog %}
+    <div class="row no-gutters border rounded overflow-hidden my-3 flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static">
+        <strong class="d-inline-block mb-2 text-primary">Article by {{post.author}}</strong>
+        <h3 class="mb-0">{{post.title}}</h3>
+        <div class="mb-1 text-muted">{{post.TimeStamp}}</div>
+        <p class="card-text mb-auto">{{post.content| truncatechars:50}}</p>
+        <div class="my-2">
+          <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary">Continue reading</a>
+        </div>
+      </div>
+      <div class="col-auto d-none d-lg-block">
+  
+  
+      </div>
+    </div>
+  
+    {% endfor %}
+  </div>
+  
 {% endblock %} 

@@ -6,18 +6,13 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,logout,login 
 
 
-#selenium import
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.select import Select
-import time
+
 # Create your views here.
 def home(request):
- 
+    popular_blog=Post.objects.filter(blogtype='popular')
+    context={'popular_blog':popular_blog}
 
-    return render(request,'home/index.html')
+    return render(request,'home/index.html',context)
 def contact(request):
   
     if request.method=='POST':
@@ -106,17 +101,3 @@ def handle_logout(request):
     messages.success(request,"Logout succesfull") 
     return redirect ('home')
 
-def automate(request):
-       if request.method=='POST':
-            service_obj=Service("D:\driver\chromedriver.exe")
-            driver=webdriver.Chrome(service=service_obj)
-            driver.get("https://irgyurban.rajasthan.gov.in/Home/JobCardDetails")
-            driver.maximize_window()
-            year=Select(driver.find_element(By.XPATH,"//*[@id='fyYear']"))
-            year.select_by_visible_text('2023')
-            jobcard_no=driver.find_element(By.ID,'jobcard').send_keys("JC202261020000045574")
-            driver.find_element(By.XPATH,"//*[@id='content-wrapper']/div[2]/div[1]/div/div/div[5]/button").click()
-            time.sleep(5)
-            messages.success(request,'Thanks for using our script')           
-
-       return render(request,'home/automate.html')

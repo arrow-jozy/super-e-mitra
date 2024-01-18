@@ -8,7 +8,7 @@
         data-size="" data-share="true"></div>
     <p class="blog-post-meta">{{post.TimeStamp}} <a href="#">{{post.stamp}}</a></p>
 
-    <p>{{post.content|linebreaks}}</p>
+    <p>{{post.content|safe}}</p>
 
     <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/{{post.sno}}" data-width="" data-numposts="5"></div>
 </div>

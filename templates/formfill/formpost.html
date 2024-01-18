@@ -1,0 +1,22 @@
+{% extends "basic.html" %}
+{% block title %}blogpost{% endblock %}
+{% block body %}
+<div class="container my-2">
+
+    <h2 class="blog-post-title">{{form.form_name}}</h2>
+    <div class="fb-like" data-href="http://127.0.0.1:8000/blog/{{post.sno}}" data-width="" data-layout="" data-action=""
+        data-size="" data-share="true"></div>
+    <p class="blog-post-meta">{{form.TimeStamp}} <a href="#">{{form.stamp}}</a></p>
+
+    <p>{{form.form_details|safe}}</p>
+    <div class="container mb-4">
+        <h1 class="mb-2">click below to give details for your form</h1>
+        <button type="button" class="btn btn-success" >
+            <a href="{% url 'userform' %}  "style="color: white; text-decoration: none;">Go to fill details</a></button>
+    </div>
+
+    <div class="fb-comments mt-4" data-href="http://127.0.0.1:8000/blog/{{post.sno}}" data-width="" data-numposts="5"></div>
+</div>
+
+
+{% endblock %}

@@ -1,7 +1,70 @@
 {% extends "basic.html" %}
 {% block title %}about{% endblock %}
 {% block aboutactive %}active{% endblock aboutactive %}
-{% block body %} 
+{% block style %}
+/* Reset some default styles */
+body, h1, h2, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
 
-<h1>This is about</h1>
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    margin: 0;
+}
+
+header {
+    background-color: #4CAF50; /* Green */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+section {
+    padding: 20px;
+    background-color: #ffffff; /* White */
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #4CAF50; /* Green */
+}
+
+p {
+    color: #555;
+}
+
+footer {
+    background-color: #4CAF50; /* Green */
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+
+
+
+{% endblock style %}
+{% block body %} 
+<section>
+    <h2>About Us</h2>
+    <p>Welcome to Your Blog Name, where we strive to provide you with up-to-date information on government vacancies,
+        various government schemes, and offer services like form filling and web development.</p>
+
+    <p>Our mission is to simplify the process of accessing government-related information and services, making it
+        easier for you to stay informed and take advantage of available opportunities.</p>
+
+    <p>Whether you are looking for the latest job openings, details about government initiatives, or need assistance
+        with form submissions, we are here to help you navigate through the complexities.</p>
+
+    <p>Additionally, we offer web development services to individuals and businesses, helping them establish a
+        strong online presence.</p>
+
+    <p>Thank you for choosing Your Blog Name as your trusted source for government-related information and
+        services.</p>
+</section>
 {% endblock  %}

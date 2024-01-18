@@ -1,0 +1,49 @@
+{% extends "basic.html" %}
+{% block title %}Userform{% endblock %}
+{% block contactactive %}{% endblock contactactive %}
+{% block style %}
+
+    .custom-file-input:hover {
+        cursor: pointer;
+    }
+{% endblock style %}
+{% block body %}
+
+
+<div class="container">
+    <h2 class="mt-2 mb-4 ">Our online form filling service</h2>
+<form method="POST" action="userform" enctype="multipart/form-data"> {% csrf_token %}
+    <div class="form-group">
+      <label for="exampleInputEmail1">Name</label>
+      <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Father/husband-name</label>
+      <input type="text" class="form-control" id="guiders" name="guiders" aria-describedby="guiders">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone_no</label>
+      <input type="phone" class="form-control" name="phone_no" id="phone_no">
+    </div>
+    <div class="form-group">
+      <label for="city">city</label>
+      <input type="city" class="form-control" name="city" id="city">
+    </div>
+    <div class="form-group">
+      <label for="content">Form filling service you want</label>
+      <textarea class="form-control" name="form_name" id="form_name" cols="30" rows="2"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="photos">Upload Photos (Multiple):</label>
+        <input type="file" class="form-control" name="photos" id="photos" accept="image/*" multiple placeholder="Select or drag and drop photos">
+    </div>
+
+    
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+</div>
+
+{% endblock  %}
