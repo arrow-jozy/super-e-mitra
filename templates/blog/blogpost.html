@@ -1,5 +1,12 @@
 {% extends "basic.html" %}
 {% block title %}blogpost{% endblock %}
+{% block style %}
+{% endblock style %}
+
+/* .container.my-2{
+    overflow: scroll;
+} */
+
 {% block body %}
 <div class="container my-2">
 
@@ -9,8 +16,15 @@
     <p class="blog-post-meta">{{post.TimeStamp}} <a href="#">{{post.stamp}}</a></p>
 
     <p>{{post.content|safe}}</p>
-
-    <div class="fb-comments" data-href="http://127.0.0.1:8000/blog/{{post.sno}}" data-width="" data-numposts="5"></div>
+    <div class="container mb-4">
+        <h1 class="mb-2">click below to give details for your form</h1>
+        <button type="button" class="btn btn-success">
+            <a href="{% url 'formfill' %}  " style="color: white; text-decoration: none;">Go to fill
+                details</a></button>
+    </div>
+   <div class="container">
+    <div class="fb-comments" data-href="http://127.0.0.1:8000//blog/{{post.sno}}" data-width="" data-numposts="5"></div>
+</div>
 </div>
 
 

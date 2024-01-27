@@ -1,19 +1,13 @@
 from django.shortcuts import render,HttpResponse,redirect
-from .models import Form,Userform,UserformImage
+from .models import Formfill,UserformImage
+from django.contrib import messages
 # Create your views here.
 
-def formfill (request):
-    allform=Form.objects.all()
-    context={'allform':allform,}
 
-    return render(request,'formfill/formfill.html',context)
 
-def formpost(request,slug):
-    form=Form.objects.filter(slug=slug).first()
-    context={'form':form}
-    return render(request,'formfill/formpost.html',context)   
+   
 
-def userform(request):
+def formfill(request):
     if request.method == 'POST':
         name = request.POST.get('name')
         guiders= request.POST.get('guiders')
@@ -25,11 +19,12 @@ def userform(request):
         # Handling file uploads
         photos = request.FILES.getlist('photos')
 
-        user_form_instance = Userform.objects.create(name=name, guiders=guiders, phone_no=phone_no, city=city, form_name=form_name)
+        user_form_instance = Formfill.objects.create(name=name, guiders=guiders, phone_no=phone_no, city=city, form_name=form_name)
 
         for photo in photos:
              UserformImage.objects.create(userform=user_form_instance, photo=photo)
         
+        messages.success(request,'Your form has been submitted succesfully')
         # Userform.objects.create(name=name,guiders=guiders,phone_no=phone_no,city=city,form_name=form_name,photos=photos)
 
 

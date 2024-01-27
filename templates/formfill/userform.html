@@ -1,6 +1,6 @@
 {% extends "basic.html" %}
-{% block title %}Userform{% endblock %}
-{% block contactactive %}{% endblock contactactive %}
+{% block title %}Formfill{% endblock %}
+{% block formfillactive %}active{% endblock formfillactive %}
 {% block style %}
 
     .custom-file-input:hover {
@@ -12,7 +12,7 @@
 
 <div class="container">
     <h2 class="mt-2 mb-4 ">Our online form filling service</h2>
-<form method="POST" action="userform" enctype="multipart/form-data"> {% csrf_token %}
+<form method="POST" action="" enctype="multipart/form-data"> {% csrf_token %}
     <div class="form-group">
       <label for="exampleInputEmail1">Name</label>
       <input type="text" class="form-control" id="name" name="name" aria-describedby="name">
@@ -34,14 +34,15 @@
       <textarea class="form-control" name="form_name" id="form_name" cols="30" rows="2"></textarea>
     </div>
 
-    <div class="form-group">
+     <div class="form-group">
         <label for="photos">Upload Photos (Multiple):</label>
-        <input type="file" class="form-control" name="photos" id="photos" accept="image/*" multiple placeholder="Select or drag and drop photos">
-    </div>
+        <input type="file" class="form-control" name="photos" id="photos" accept="image/*" multiple placeholder="">
+    </div> 
+
 
     
     
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit"  class="btn btn-success mb-5" >Submit</button>
   </form>
 
 </div>
