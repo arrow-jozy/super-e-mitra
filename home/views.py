@@ -101,3 +101,5 @@ def handle_logout(request):
     messages.success(request,"Logout succesfull") 
     return redirect ('home')
 
+def waiting(request):
+    return render(request,'home/waiting.html')

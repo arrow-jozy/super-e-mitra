@@ -9,6 +9,7 @@ from django.contrib import messages
 
 def formfill(request):
     if request.method == 'POST':
+        return redirect('home/waiting')
         name = request.POST.get('name')
         guiders= request.POST.get('guiders')
         phone_no=request.POST.get('phone_no')

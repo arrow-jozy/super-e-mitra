@@ -29,7 +29,7 @@ class UserformImage(models.Model):
     # Additional fields if needed, like caption, description, etc.
 
     def __str__(self):
-        return f'Image for {self.userform.name}'
+        return f'Image by {self.userform.name}'
 
 
 
